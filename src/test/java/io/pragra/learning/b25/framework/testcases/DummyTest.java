@@ -1,6 +1,7 @@
 package io.pragra.learning.b25.framework.testcases;
 
 import io.pragra.learning.b25.framework.config.Config;
+import io.pragra.learning.b25.framework.data.FlatFileData;
 import io.pragra.learning.b25.framework.drivermanager.DriverManager;
 import io.pragra.learning.b25.framework.listeners.ScreenShotListener;
 import io.pragra.learning.b25.framework.pages.ContactSales;
@@ -51,14 +52,16 @@ public class DummyTest {
 //                .keyCompany("Pragra");
     }
 
-    @Test
-    public void contactSalesTest(){
+    @Test(dataProviderClass = FlatFileData.class, dataProvider = "getSalesData")
+    public void contactSalesTest(String email, String company, String value) throws InterruptedException {
         driver.findElement(By.className("top-contactsales")).click();
         ContactSales contactSales = new ContactSales(driver);
         contactSales
-                .enterEmail("atin@gmail.com")
-                .company("ABC Corp")
-                .selectEmpCountByIndex(2);
+                .enterEmail(email.trim())
+                .company(company.trim())
+                .selectEmpCountByValue(value.trim());
+
+        Thread.sleep(5000);
     }
 
 
