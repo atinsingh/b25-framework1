@@ -3,9 +3,11 @@ package io.pragra.learning.b25.framework.testcases;
 import io.pragra.learning.b25.framework.config.Config;
 import io.pragra.learning.b25.framework.drivermanager.DriverManager;
 import io.pragra.learning.b25.framework.listeners.ScreenShotListener;
+import io.pragra.learning.b25.framework.pages.ContactSales;
 import io.pragra.learning.b25.framework.pages.RequestADemoPage;
 import io.pragra.learning.b25.framework.pages.TopNavigationBar;
 import io.pragra.learning.b25.framework.utils.Utils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,7 +32,7 @@ public class DummyTest {
         driver.get(Config.getInstance().getProperty("app.url"));
     }
 
-    @Test
+    @Test(enabled = false)
     public void testRequestDemo() {
         TopNavigationBar topNavigationBar = new TopNavigationBar(driver);
        // RequestADemoPage demoPage = topNavigationBar.clickOnRequestDemo();
@@ -48,6 +50,18 @@ public class DummyTest {
 //                .and()
 //                .keyCompany("Pragra");
     }
+
+    @Test
+    public void contactSalesTest(){
+        driver.findElement(By.className("top-contactsales")).click();
+        ContactSales contactSales = new ContactSales(driver);
+        contactSales
+                .enterEmail("atin@gmail.com")
+                .company("ABC Corp")
+                .selectEmpCountByIndex(2);
+    }
+
+
 
     @AfterSuite
     public void tearDown() throws InterruptedException {
