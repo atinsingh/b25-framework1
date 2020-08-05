@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Pragra">
+    <test name="data-learning">
+        <parameter name="username" value="Navdeep"></parameter>
+        <parameter name="password" value="12345678"></parameter>
+        <classes>
+            <class name="io.pragra.learning.b25.framework.testcases.DataTest"></class>
+        </classes>
+    </test>
+</suite>
