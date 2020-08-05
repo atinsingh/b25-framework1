@@ -57,4 +57,14 @@ public class Utils {
         }
 
     }
+
+
+    public static String getReportFileName() {
+        createDirs(Config.getInstance().getProperty("report.file.location"));
+        Path path  = Paths.get(
+                Config.getInstance().getProperty("report.file.location"),
+                Config.getInstance().getProperty("report.file.name")+"_"+generateTimeStamp()+".html");
+        return path.toString();
+
+    }
 }

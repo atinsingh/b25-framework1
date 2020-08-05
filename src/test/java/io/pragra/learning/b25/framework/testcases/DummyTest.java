@@ -34,7 +34,7 @@ public class DummyTest {
         driver.get(Config.getInstance().getProperty("app.url"));
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testRequestDemo() {
         TopNavigationBar topNavigationBar = new TopNavigationBar(driver);
        // RequestADemoPage demoPage = topNavigationBar.clickOnRequestDemo();
@@ -53,7 +53,7 @@ public class DummyTest {
 //                .keyCompany("Pragra");
     }
 
-    @Test(dataProviderClass = ExcelData.class, dataProvider = "getContactData")
+    @Test(dataProviderClass = ExcelData.class, dataProvider = "getContactData", enabled = false)
     public void contactSalesTest(String email, String company, String value) throws InterruptedException {
         driver.findElement(By.className("top-contactsales")).click();
         ContactSales contactSales = new ContactSales(driver);

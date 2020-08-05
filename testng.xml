@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Pragra">
+    <listeners>
+        <listener class-name="io.pragra.learning.b25.framework.listeners.ReportListener"></listener>
+    </listeners>
     <test name="data-learning">
         <parameter name="username" value="Navdeep"></parameter>
         <parameter name="password" value="12345678"></parameter>
